@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  background-image: url("../Images/Mountain.jpg");
+  background-size: cover;
+}
+.tribute {
+  background: rgb(110, 164, 245);
+  width: auto;
+  height: auto;
+}
+.heading_tribute {
+  background-color: black;
+  color: rgba(155, 250, 50, 0.8);
+  text-align: center;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+}
+#image {
+  display: block;
+  border: black;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.img_info {
+  color: rgb(211, 9, 252);
+  padding: 10px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
+}
+.lorem_info {
+  padding-left: 10px;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+span {
+  font-weight: bold;
+  color: rgb(0, 68, 73);
+  background-color: red;
+  border: black;
+  border-style: solid;
+  border-width: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.list_start {
+  margin: 8px;
+  padding-left: 10px;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.list_info {
+  padding-left: 50px;
+}
+.copyright {
+  margin-top: 10px;
+  color: palevioletred;
+  background-color: black;
+  padding-bottom: 5px;
+}
+#link_info {
+  text-align: center;
+  background-attachment: fixed;
+  background-color: rgba(155, 250, 50, 0.8);
+}

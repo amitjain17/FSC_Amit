@@ -1,0 +1,42 @@
+* {
+  margin: 10px;
+}
+#hello {
+  color: #0f0;
+  font-size: 2em;
+  text-transform: uppercase;
+  text-decoration: line-through;
+}
+.world {
+  color: rgb(200, 151, 51);
+  font-size: 2rem;
+  background-color: rgba(51, 39, 151, 0.4);
+  text-decoration: underline;
+}
+body {
+  background-color: rgba(221, 34, 90, 0.6);
+}
+div {
+  background-color: royalblue;
+  width: 100vw;
+  height: calc(100vh - 100px);
+  padding-left: 20px;
+  border: solid;
+  border-width: 10px;
+}
+.div_class {
+  background-color: thistle;
+  height: 100px;
+  width: 25%;
+  text-decoration: darkgreen;
+}
+#lorem {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  text-indent: 100rem;
+
+  line-height: 2ch;
+  letter-spacing: 5px;
+  word-spacing: 20px;
+}
