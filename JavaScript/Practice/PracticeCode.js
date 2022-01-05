@@ -64,3 +64,15 @@ function check1(val1, val2) {
 let ans = check1(2, 5)
 console.log(ans);
 
+//Arrow Functions
+
+let add = (num3, num4) => { return num3 + num4 }
+
+let r = add(2, 6);
+console.log("Arrow Function Answer is " + r);
+
+//Arrow Functions with no return type
+add = (num3, num4) => num3 + num4
+
+r = add(2, 6);
+console.log("Arrow Function no return type Answer is " + r);
