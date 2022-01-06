@@ -76,3 +76,4 @@ add = (num3, num4) => num3 + num4
 
 r = add(2, 6);
 console.log("Arrow Function no return type Answer is " + r);
+
