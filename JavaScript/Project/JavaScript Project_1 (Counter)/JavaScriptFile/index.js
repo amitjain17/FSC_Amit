@@ -21,5 +21,7 @@ function save() {
 
     string += "(" + count + ")" + "- "
     val.textContent = string
+    data.textContent = 0;
+    count = 0
 
 }
