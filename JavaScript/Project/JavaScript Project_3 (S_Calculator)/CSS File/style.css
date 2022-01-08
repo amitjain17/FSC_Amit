@@ -1,0 +1,11 @@
+#number {
+  margin: 10px;
+}
+#first_number,
+#second_number {
+  border: solid;
+  padding: 5px;
+}
+#result {
+  font-size: 50px;
+}
