@@ -1,0 +1,49 @@
+body,
+html {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: rgb(32, 32, 32);
+}
+nav {
+  background-color: black;
+}
+.react-img {
+  max-width: 100px;
+  position: absolute;
+  display: flex;
+  padding: 5px;
+}
+.header {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+.header h1 {
+  color: aqua;
+}
+.list-content {
+  list-style-type: none;
+  display: flex;
+  color: aliceblue;
+}
+.list-bullet {
+  padding: 10px;
+  float: right;
+}
+
+.main-content {
+  color: aliceblue;
+}
+
+.main-content-heading {
+  margin: 25px;
+}
+.order-list {
+  position: relative;
+}
+
+footer {
+  display: block;
+  text-align: center;
+  background-color: aliceblue;
+}
