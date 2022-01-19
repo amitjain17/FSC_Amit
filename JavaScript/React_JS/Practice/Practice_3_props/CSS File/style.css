@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+.main-div {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #000000;
+  float: left;
+  height: 20rem;
+}
+.image {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.first-heading {
+  font-weight: bold;
+}
+.phone-contact > img {
+  margin: 2px;
+}
+.phone-contact > span {
+  display: inline;
+}
+.email-contact > img {
+  margin: 2px;
+}
+.email-contact > span {
+  display: inline;
+}

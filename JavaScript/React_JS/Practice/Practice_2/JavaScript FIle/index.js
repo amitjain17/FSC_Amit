@@ -50,3 +50,4 @@ ReactDOM.render(<div>
     <Foot />
 </div >,
     document.getElementById("root"))
+
