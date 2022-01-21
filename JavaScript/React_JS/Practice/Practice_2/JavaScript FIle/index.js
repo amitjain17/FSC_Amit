@@ -1,3 +1,10 @@
+
+// import Nav from "./nav.js";
+
+// import MainContent from "./maincontent.js";
+
+
+
 function Nav() {
     return (
         <nav className="nav-class">
@@ -44,10 +51,17 @@ function Foot() {
     )
 }
 
-ReactDOM.render(<div>
-    <Nav />
-    <MainContent />
-    <Foot />
-</div >,
+function Main() {
+    return (
+        <div>
+            <Nav />
+            <MainContent />
+            <Foot />
+        </div >
+    )
+
+}
+
+ReactDOM.render(<Main />,
     document.getElementById("root"))
 

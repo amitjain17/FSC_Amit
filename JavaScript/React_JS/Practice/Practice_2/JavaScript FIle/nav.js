@@ -1,4 +1,6 @@
+
 export default function Nav() {
+
     return (
         <nav className="nav-class">
             <img src="../ReactLogo.png" className="react-img" alt="react-logo"></img>
@@ -15,5 +17,6 @@ export default function Nav() {
                 </ul>
             </header>
         </nav>
-    );
+    )
+
 }
