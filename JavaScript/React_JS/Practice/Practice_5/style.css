@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+.box-check {
+  border-radius: 10px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 2px;
+  text-align: center;
+  border: 1px solid black;
+}
