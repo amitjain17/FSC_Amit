@@ -1,0 +1,12 @@
+{
+  "name": "practice_5",
+  "version": "1.0.0",
+  "description": "first json file",
+  "main": "index.js",
+  "scripts": {
+    "test": "server on 8082"
+  },
+  "author": "Amit Jain",
+  "license": "ISC",
+  "type": "module"
+}
