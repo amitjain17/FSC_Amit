@@ -1,0 +1,60 @@
+body {
+  overflow: scroll;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.header {
+  width: 100%;
+  border-bottom: 2px solid rgb(90, 90, 90);
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.airbnb-image {
+  margin-left: 10px;
+}
+.img-mountain {
+  display: block;
+  margin: 50px auto;
+  width: 40%;
+  border-radius: 30px;
+}
+
+.props-div {
+  width: fit-content;
+  margin: 10px;
+  display: inline-block;
+  border: 2px solid rgb(90, 90, 90);
+  overflow: hidden;
+  border-radius: 10px;
+  height: 15rem;
+}
+.city-img {
+  border-radius: 5px;
+  width: 13rem;
+}
+
+.props-head {
+  margin: 0;
+  text-align: center;
+}
+.props-scd {
+  margin: 0;
+  text-align: center;
+}
+.props-bottom {
+  text-align: center;
+  color: gray;
+}
+.props-center-div {
+  display: inline-block;
+}
