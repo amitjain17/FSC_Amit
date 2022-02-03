@@ -14,12 +14,13 @@ export default makeStyles({
         height: '100%',
     },
     card: {
+        margin: '7%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         borderRadius: '15px',
         height: '100%',
-        position: 'relative',
+        position: 'relative'
     },
     overlay: {
         position: 'absolute',
