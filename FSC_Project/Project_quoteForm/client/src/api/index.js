@@ -3,6 +3,8 @@ import axios from "axios";
 const url = 'http://localhost:8083/';
 
 
+export const fetchData = () => axios.get(`${url}student`);
+
 export const validate = (data) => axios.post(url, data).then(console.log(data));
 
 // export const fetchPosts = () => axios.get(url);

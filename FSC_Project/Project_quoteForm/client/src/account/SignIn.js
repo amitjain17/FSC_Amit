@@ -16,11 +16,11 @@ const SignIn = (event) => {
     function DataStored(event) {
         setData((prevData) => { return { ...prevData, [event.target.name]: `${event.target.type === "checkbox" ? event.target.checked : event.target.value}` } });
     }
-    // function send() {
-    //     console.log(data);
-    //     // const status = checkValidation(data);
-    //     console.warn(localStorage.setItem("name", data));
-    // }
+    async function send() {
+        console.log(data);
+        const status = await checkValidation(data);
+        console.warn(localStorage.setItem("name", data));
+    }
 
     const classes = useStyles();
     return (
@@ -34,8 +34,8 @@ const SignIn = (event) => {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    {/* <form className={classes.form} onSubmit={send} noValidate> */}
-                    <form className={classes.form} action="login" method="POST" noValidate>
+                    <form className={classes.form} onSubmit={send} noValidate>
+                        {/* <form className={classes.form} action="login" method="POST" noValidate> */}
                         <TextField
                             variant="outlined"
                             margin="normal"
