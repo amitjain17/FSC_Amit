@@ -15,17 +15,17 @@ public class Student {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int id;
 	
-	@Column(name="FirstName")
+	@Column(name="fName")
 	public String fname;
 	
-	@Column(name="LastName")
+	@Column(name="lName")
 	public String lname;
 	
 	public String email;
-	public int phoneNumber;
+	public String phoneNumber;
 	public String projectType;
-	public int estimatedBudget;
-	public int timeFrame;
+	public String estimatedBudget;
+	public String timeFrame;
 	public String projectDetails;
 	
 	
@@ -33,8 +33,8 @@ public class Student {
 	public Student() {
 		super();
 	}
-	public Student(int id, String fname, String lname, String email, int phoneNumber, String projectType,
-			int estimatedBudget, int timeFrame, String projectDetails) {
+	public Student(int id, String fname, String lname, String email, String phoneNumber, String projectType,
+			String estimatedBudget, String timeFrame, String projectDetails) {
 		super();
 		this.id = id;
 		this.fname = fname;
@@ -70,10 +70,10 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getProjectType() {
@@ -82,16 +82,16 @@ public class Student {
 	public void setProjectType(String projectType) {
 		this.projectType = projectType;
 	}
-	public int getEstimatedBudget() {
+	public String getEstimatedBudget() {
 		return estimatedBudget;
 	}
-	public void setEstimatedBudget(int estimatedBudget) {
+	public void setEstimatedBudget(String estimatedBudget) {
 		this.estimatedBudget = estimatedBudget;
 	}
-	public int getTimeFrame() {
+	public String getTimeFrame() {
 		return timeFrame;
 	}
-	public void setTimeFrame(int timeFrame) {
+	public void setTimeFrame(String timeFrame) {
 		this.timeFrame = timeFrame;
 	}
 	public String getProjectDetails() {

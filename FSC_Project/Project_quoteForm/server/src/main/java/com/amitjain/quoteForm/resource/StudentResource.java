@@ -12,26 +12,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amitjain.quoteForm.repository.StudentRepository;
 
-
+@CrossOrigin(origins = "http://localhost:3000",allowedHeaders = "*")
 @RestController
 public class StudentResource {
 	
 	@Autowired
 	StudentRepository repo;
 	
-//	@CrossOrigin(origins = "http://localhost:3000/login")
-//	@PostMapping("/login")
-//	@ResponseBody
-//	public String postlogin() {
-//		
-//		return "login";
-//	}
-//	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("student")
 	public List<Student> getStudent(){
@@ -53,21 +44,22 @@ public class StudentResource {
 	return st;
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("student/{id}")
 	public Student getStudentById(@PathVariable(value="id") Integer studentId) throws Exception {
 		
-		Student st = (Student) repo.findById(studentId).orElse(new Student(0,"Not Found","Not Found","Not Found",0,"Not Found",0,0,"Not Found"));
+		Student st = (Student) repo.findById(studentId).orElse(new Student(0,"Not Found","Not Found","Not Found","","Not Found","","","Not Found"));
 		return st;	
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("student")
 	public Student setStudent(@RequestBody Student st) {
 		
 		return repo.save(st);			
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@DeleteMapping("student/{id}")
 	public Map<String,Boolean> deleteStudent(@PathVariable(value="id") Integer studentId) throws Exception {
 
@@ -84,10 +76,12 @@ public class StudentResource {
 	    return response;
 	}
 
+	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PutMapping("student/{id}")
 	public Student updateStudent(@PathVariable(value="id") Integer studentId, @RequestBody Student studentData) {
 		
-		 Student student = repo.findById(studentId).orElse(new Student(0,"Not Found","Not Found","Not Found",0,"Not Found",0,0,"Not Found"));
+		 Student student = repo.findById(studentId).orElse(new Student(0,"Not Found","Not Found","Not Found","","Not Found","","","Not Found"));
 
 		 student.setFname(studentData.getFname());
 		 student.setLname(studentData.getLname());

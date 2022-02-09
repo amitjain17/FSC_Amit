@@ -3,33 +3,53 @@ import ReactDOM from "react-dom"
 import { useDispatch } from 'react-redux';
 import { Dialog, Typography, Paper, Button, DialogActions, DialogTitle, DialogContent, TextField, TextareaAutosize } from '@material-ui/core';
 
+import { createData, updateData } from "../../actions/actions.js";
+import { useSelector } from 'react-redux';
 
-const Form = () => {
+const Form = (currentId, setCurrentId) => {
+
     const [formData, setFormData] = useState({
-        firstName: "", lastName: "", email: "", estimatedBudget: "", phoneNumber: "", projectDetails: "", projectType: "", timeFrame: ""
+        fname: "", lname: "", email: "", estimatedBudget: "", phoneNumber: "", projectDetails: "", projectType: "", timeFrame: ""
     })
+    const QData = useSelector((state) => currentId ? state.data.find((p) => p.id === currentId) : null);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => { if (QData) setFormData(QData) }, [QData])
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        dispatch(createData(formData))
+        if (currentId) {
+            dispatch(updateData(currentId, formData))
+        } else {
+            dispatch(createData(formData))
+        }
         console.warn(formData);
-    }
-    const disptach = useDispatch();
-    useEffect(() => { if (formData) setFormData(formData) }, [formData])
 
+        clear();
+    }
+
+    const clear = () => {
+        setCurrentId(null)
+        setFormData({
+            fname: "", lname: "", email: "", estimatedBudget: "", phoneNumber: "", projectDetails: "", projectType: "", timeFrame: ""
+        })
+    }
     return (
         <div>
             <DialogContent dividers>
                 <Paper >
                     <form autoComplete="off" onSubmit={handleSubmit}
-                        style={{ "padding": "3%" }}>
+                        style={{ "padding": "3%" }} noValidate>
                         <div>
                             <Typography variant="h5" style={{ "textAlign": "center" }}>Creating a Quote</Typography>
                         </div>
-                        <TextField name="firstName" variant="standard" label="FirstName" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} style={{
+                        <TextField name="firstName" variant="standard" label="FirstName" value={formData.fname} onChange={(e) => setFormData({ ...formData, fname: e.target.value })} style={{
                             "marginRight": "10%"
                         }} required />
 
-                        < TextField name="lastName" variant="standard" label="LastName" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} required style={{
+                        < TextField name="lastName" variant="standard" label="LastName" value={formData.lname} onChange={(e) => setFormData({ ...formData, lname: e.target.value })} required style={{
                             "marginRight": "10%"
                         }} />
 

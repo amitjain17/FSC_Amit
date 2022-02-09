@@ -4,7 +4,7 @@ import { Container, Grid, CssBaseline, Avatar, Typography, TextField, Checkbox, 
 import { LockOutlined } from '@material-ui/icons';
 
 import useStyles from './styles.js';
-import { checkValidation } from '../actions/posts.js';
+import { checkValidation } from '../actions/actions.js';
 
 
 const SignIn = (event) => {
