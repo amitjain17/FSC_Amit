@@ -27,14 +27,15 @@ public class Student {
 	public String estimatedBudget;
 	public String timeFrame;
 	public String projectDetails;
-	
+	public String moment;
+	public String image;
 	
 	
 	public Student() {
 		super();
 	}
 	public Student(int id, String fname, String lname, String email, String phoneNumber, String projectType,
-			String estimatedBudget, String timeFrame, String projectDetails) {
+			String estimatedBudget, String timeFrame, String projectDetails, String moment, String image) {
 		super();
 		this.id = id;
 		this.fname = fname;
@@ -45,6 +46,8 @@ public class Student {
 		this.estimatedBudget = estimatedBudget;
 		this.timeFrame = timeFrame;
 		this.projectDetails = projectDetails;
+		this.moment = moment;
+		this.image = image;
 	}
 	public int getId() {
 		return id;
@@ -100,13 +103,23 @@ public class Student {
 	public void setProjectDetails(String projectDetails) {
 		this.projectDetails = projectDetails;
 	}
+	public String getMoment() {
+		return moment;
+	}
+	public void setMoment(String moment) {
+		this.moment = moment;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", phoneNumber="
 				+ phoneNumber + ", projectType=" + projectType + ", estimatedBudget=" + estimatedBudget + ", timeFrame="
-				+ timeFrame + ", projectDetails=" + projectDetails + "]";
+				+ timeFrame + ", projectDetails=" + projectDetails + ", moment=" + moment + ", image=" + image + "]";
 	}
-	
-	
 	
 }

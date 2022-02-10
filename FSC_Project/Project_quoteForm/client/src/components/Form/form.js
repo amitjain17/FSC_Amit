@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
+import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 import { Dialog, Typography, Paper, Button, DialogActions, DialogTitle, DialogContent, TextField, TextareaAutosize } from '@material-ui/core';
 
 import { createData, updateData } from "../../actions/actions.js";
 import { useSelector } from 'react-redux';
 
-const Form = (currentId, setCurrentId) => {
+const Form = ({ currentId, setCurrentId }) => {
 
     const [formData, setFormData] = useState({
-        fname: "", lname: "", email: "", estimatedBudget: "", phoneNumber: "", projectDetails: "", projectType: "", timeFrame: ""
+        fname: "", lname: "", email: "", estimatedBudget: "", phoneNumber: "", projectDetails: "", image: "", projectType: "", timeFrame: ""
     })
     const QData = useSelector((state) => currentId ? state.data.find((p) => p.id === currentId) : null);
 
@@ -19,21 +20,18 @@ const Form = (currentId, setCurrentId) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(createData(formData))
         if (currentId) {
             dispatch(updateData(currentId, formData))
         } else {
             dispatch(createData(formData))
         }
-        console.warn(formData);
-
         clear();
     }
 
     const clear = () => {
         setCurrentId(null)
         setFormData({
-            fname: "", lname: "", email: "", estimatedBudget: "", phoneNumber: "", projectDetails: "", projectType: "", timeFrame: ""
+            fname: " ", lname: " ", email: " ", estimatedBudget: " ", phoneNumber: " ", projectDetails: " ", image: " ", projectType: " ", timeFrame: " "
         })
     }
     return (
@@ -83,10 +81,15 @@ const Form = (currentId, setCurrentId) => {
                                 "minWidth": "12rem"
                             }} />
                         <br />
+                        <div style={{ "width": "97%", "margin": "10px 0" }}>
+                            <FileBase type="file" multiple={false} onDone={({ base64 }) => setFormData({ ...FormData, image: base64 })} />
+                        </div>
 
                         <Button autoFocus color="primary" type="submit" variant="contained">
                             Save changes
                         </Button>
+                        <Button variant="contained" color="secondary" size="small" onClick={clear}>Clear</Button>
+
                     </form>
                 </Paper>
 

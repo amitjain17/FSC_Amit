@@ -48,15 +48,17 @@ public class StudentResource {
 	@GetMapping("student/{id}")
 	public Student getStudentById(@PathVariable(value="id") Integer studentId) throws Exception {
 		
-		Student st = (Student) repo.findById(studentId).orElse(new Student(0,"Not Found","Not Found","Not Found","","Not Found","","","Not Found"));
+		Student st = (Student) repo.findById(studentId).orElse(new Student(0,"Not Found","Not Found","Not Found","","","","Not Found","","","Not Found"));
 		return st;	
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("student")
 	public Student setStudent(@RequestBody Student st) {
-		
-		return repo.save(st);			
+		repo.save(st);
+	
+		List<Student> resendData = (List<Student>)repo.findAll();
+		return st;			
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
@@ -81,7 +83,7 @@ public class StudentResource {
 	@PutMapping("student/{id}")
 	public Student updateStudent(@PathVariable(value="id") Integer studentId, @RequestBody Student studentData) {
 		
-		 Student student = repo.findById(studentId).orElse(new Student(0,"Not Found","Not Found","Not Found","","Not Found","","","Not Found"));
+		 Student student = repo.findById(studentId).orElse(new Student(0,"Not Found","","","Not Found","Not Found","","Not Found","","","Not Found"));
 
 		 student.setFname(studentData.getFname());
 		 student.setLname(studentData.getLname());

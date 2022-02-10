@@ -22,10 +22,16 @@ export const getData = () => async (dispatch) => {
     }
 }
 
-export const createData = (data) => async (dispatch) => {
+
+async function PostRequest(data1) {
+    let val = await api.generateData(data1);
+    return val;
+}
+
+export const createData = (data1) => async (dispatch) => {
     try {
-        const { rdata } = await api.createData(data);
-        dispatch({ type: "CREATE", payload: rdata })
+        const rdata = await PostRequest(data1);
+        dispatch({ type: "CREATE", payload: rdata.data });
     } catch (error) {
         console.log(error);
     }

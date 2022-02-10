@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import { Button, DialogTitle, Dialog, makeStyles, Container, AppBar, Toolbar, Typography, InputBase, Grid, Collapse } from '@material-ui/core';
+import { Button, DialogTitle, Dialog, makeStyles, Container, AppBar, Toolbar, Typography, InputBase, Grid, useScrollTrigger, CssBaseline } from '@material-ui/core';
 import { Search, CloseRounded } from '@material-ui/icons';
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import PropTypes from 'prop-types';
 
 import { getData } from "../actions/actions.js";
 import useStyles from "./style.js";
@@ -21,10 +22,10 @@ const Front = () => {
     const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    useEffect(async () => {
         dispatch(getData());
     }, [currentId, dispatch])
-    const data = useSelector((state) => state.data)
+    const data = useSelector((state) => state.data);
     console.log(data);
 
     const openForm = () => {
@@ -33,6 +34,7 @@ const Front = () => {
     const closeForm = () => {
         setFormOpen(false);
     }
+
 
 
     return (
@@ -48,7 +50,11 @@ const Front = () => {
                     <Form currentId={currentId} setCurrentId={setCurrentId} />
 
                 </Dialog>
-                <AppBar position="static" style={{
+
+                {/* <AppBar position="static" style={{
+                    "backgroundColor": "#0058ca"
+                }}> */}
+                <AppBar style={{
                     "backgroundColor": "#0058ca"
                 }}>
                     <Toolbar >

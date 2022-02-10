@@ -17,7 +17,7 @@ const Post = ({ data, setCurrentId }) => {
                     </IconButton>}
                 title={`${data.fname} ${data.lname}`}
                 subheader={moment(data.id).fromNow()} />
-            <CardMedia image="../../../images/first.jpg" title="AMit" />
+            <CardMedia image={data.image} title={data.id} style={{ "height": 0, "paddingTop": "56.25%", "backgroundColor": "rgba(0,0,0,0.5)", "backgroundBlendMode": "darken" }} />
             <CardContent>
                 <Typography variant='h6'>
                     Type: {data.projectType}
