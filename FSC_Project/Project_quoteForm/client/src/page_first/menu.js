@@ -59,7 +59,9 @@ const MenuI = () => {
             <MenuList autoFocusItem={open} id="menu-list-grow" className={classes.MenuList} >
 
                 <MenuItem onClick={handleClose} style={{ "float": "right" }}><CloseRounded /></MenuItem>
-
+                <a href='/' style={{ "textDecoration": "none" }}>
+                    <MenuItem style={{ "color": "white", "letterSpacing": "2px" }}>Home</MenuItem>
+                </a>
                 <a href='/login' style={{ "textDecoration": "none" }}>
                     <MenuItem style={{ "color": "white", "letterSpacing": "2px" }}>Sign IN</MenuItem>
                 </a>

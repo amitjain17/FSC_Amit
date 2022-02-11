@@ -1,7 +1,7 @@
 import { CircularProgress, Grid, ImageList, ImageListItem } from '@material-ui/core';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import Post from './Post/post.js'
+import { useSelector } from 'react-redux';
 
 import { makeStyles, useTheme } from '@material-ui/core';
 import MobileStepper from '@material-ui/core/MobileStepper';
@@ -70,11 +70,11 @@ const Posts = ({ setCurrentId }) => {
                 >
 
                     {posts.map((post) => (
-                        <div>
-                            <Grid key={post.id} items >
-                                <Post data={post} setCurrentId={setCurrentId} />
-                            </Grid>
-                        </div>
+
+                        <Grid key={post.id} item >
+                            <Post data={post} setCurrentId={setCurrentId} />
+                        </Grid>
+
                     ))}
                 </AutoPlaySwipeableViews>
                 <MobileStepper

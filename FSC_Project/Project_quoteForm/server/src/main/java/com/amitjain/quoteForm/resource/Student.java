@@ -1,11 +1,20 @@
 package com.amitjain.quoteForm.resource;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="student_data")
@@ -27,15 +36,27 @@ public class Student {
 	public String estimatedBudget;
 	public String timeFrame;
 	public String projectDetails;
-	public String moment;
-	public String image;
 	
+	
+	public String image;
+
+	//Adding Date Automatically
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
+	public Date moment;
+	
+	//Adding Date Automatically
+	@PrePersist
+	private void onCreate() {
+		moment = new Date();
+	}
 	
 	public Student() {
 		super();
 	}
 	public Student(int id, String fname, String lname, String email, String phoneNumber, String projectType,
-			String estimatedBudget, String timeFrame, String projectDetails, String moment, String image) {
+			String estimatedBudget, String timeFrame, String projectDetails, Date moment, String image) {
 		super();
 		this.id = id;
 		this.fname = fname;
@@ -103,10 +124,15 @@ public class Student {
 	public void setProjectDetails(String projectDetails) {
 		this.projectDetails = projectDetails;
 	}
-	public String getMoment() {
+	public Date getMoment() {
 		return moment;
 	}
-	public void setMoment(String moment) {
+	
+	public void setMoment(Date moment) {
+//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+//		   LocalDateTime now = LocalDateTime.now(); 
+//		   moment = dtf.format(now);
+//		   System.out.println(moment);
 		this.moment = moment;
 	}
 	public String getImage() {
@@ -121,5 +147,7 @@ public class Student {
 				+ phoneNumber + ", projectType=" + projectType + ", estimatedBudget=" + estimatedBudget + ", timeFrame="
 				+ timeFrame + ", projectDetails=" + projectDetails + ", moment=" + moment + ", image=" + image + "]";
 	}
+	
+	
 	
 }

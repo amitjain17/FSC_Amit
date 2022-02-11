@@ -20,6 +20,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.warn(formData);
         if (currentId) {
             dispatch(updateData(currentId, formData))
         } else {
@@ -31,7 +32,7 @@ const Form = ({ currentId, setCurrentId }) => {
     const clear = () => {
         setCurrentId(null)
         setFormData({
-            fname: " ", lname: " ", email: " ", estimatedBudget: " ", phoneNumber: " ", projectDetails: " ", image: " ", projectType: " ", timeFrame: " "
+            fname: "", lname: "", email: "", estimatedBudget: "", phoneNumber: "", projectDetails: "", image: "", projectType: "", timeFrame: ""
         })
     }
     return (
@@ -82,13 +83,14 @@ const Form = ({ currentId, setCurrentId }) => {
                             }} />
                         <br />
                         <div style={{ "width": "97%", "margin": "10px 0" }}>
-                            <FileBase type="file" multiple={false} onDone={({ base64 }) => setFormData({ ...FormData, image: base64 })} />
+                            <FileBase type="file" multiple={false} onDone={({ base64 }) => setFormData({ ...formData, image: base64 })} />
+
                         </div>
 
                         <Button autoFocus color="primary" type="submit" variant="contained">
                             Save changes
                         </Button>
-                        <Button variant="contained" color="secondary" size="small" onClick={clear}>Clear</Button>
+                        {/* <Button variant="contained" color="secondary" size="small" onClick={clear}>Clear</Button> */}
 
                     </form>
                 </Paper>
