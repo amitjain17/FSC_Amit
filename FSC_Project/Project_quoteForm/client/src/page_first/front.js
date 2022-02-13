@@ -81,7 +81,7 @@ const Front = () => {
                 <Container>
                     <Grid container spacing={3} style={{ "justifyContent": "center" }}>
                         <Grid item xs={12} sm={6} >
-                            <Posts setCurrentId={setCurrentId} />
+                            <Posts setCurrentId={setCurrentId} front={true} />
                         </Grid>
                     </Grid>
                 </Container>

@@ -1,16 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { Avatar, Card, Menu, MenuItem, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@material-ui/core';
+import { Avatar, Dialog, DialogTitle, Card, Menu, MenuItem, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@material-ui/core';
 import moment from 'moment';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 
+import { getData } from "../../../actions/actions.js";
 import { deleteData } from '../../../actions/actions.js';
+import Form from "../../../components/Form/form.js";
 
-const Post = ({ data, setCurrentId }) => {
+const Post = ({ data, front }) => {
     const dispatch = useDispatch();
     const [mbar, setMbar] = useState(null);
     const open = Boolean(mbar);
+    const [formOpen, setFormOpen] = useState(false);
 
+    const [currentId, setCurrentId] = useState(null);
+    useEffect(() => {
+        dispatch(getData());
+    }, [currentId, dispatch])
+
+
+    const openForm = () => {
+        setFormOpen(true);
+    }
+    const closeForm = () => {
+        setFormOpen(false);
+    }
 
     const handleClick = (event) => {
         setMbar(event.currentTarget);
@@ -18,12 +34,23 @@ const Post = ({ data, setCurrentId }) => {
     const handleClose = () => {
         setMbar(null);
     }
-    return (
+
+    return (<div>
+        <Dialog open={formOpen}>
+            <span>
+                <DialogTitle id="customized-dialog-title" style={{ "backgroundColor": "lightsteelblue" }}>
+                    Request a quote
+                    <CloseRoundedIcon onClick={closeForm} style={{ "float": "right", "margin": "1%" }} />
+                </DialogTitle>
+            </span>
+            <Form currentId={currentId} setCurrentId={setCurrentId} />
+
+        </Dialog>
         <Card >
             <CardHeader avatar={<Avatar>A</Avatar>}
                 action={
                     <IconButton aria-label="settings" onClick={handleClick}>
-                        <MoreVertIcon />
+                        {front ? (<></>) : (<MoreVertIcon />)}
 
                     </IconButton>}
                 title={`${data.fname} ${data.lname}`}
@@ -38,8 +65,15 @@ const Post = ({ data, setCurrentId }) => {
                 onClose={handleClose}
             >
                 <MenuItem onClick={() => { dispatch(deleteData(data.id)) }}>Delete</MenuItem>
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={() => {
+                    handleClose()
+                    setCurrentId(data.id)
+                    setFormOpen(true);
+
+                }
+                }>Edit
+                </MenuItem>
+                <MenuItem onClick={handleClose}>Close</MenuItem>
             </Menu>
 
             <CardMedia image={data.image} title={data.email} style={{ "height": 0, "paddingTop": "56.25%", "backgroundColor": "rgba(0,0,0,0.5)", "backgroundBlendMode": "darken" }} />
@@ -61,6 +95,7 @@ const Post = ({ data, setCurrentId }) => {
             </CardContent>
 
         </Card>
+    </div>
     )
 }
 

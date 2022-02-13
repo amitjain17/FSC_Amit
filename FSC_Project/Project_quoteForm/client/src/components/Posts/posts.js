@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Posts = ({ setCurrentId }) => {
+const Posts = ({ setCurrentId, front }) => {
 
     const classes = useStyles();
     const theme = useTheme();
@@ -72,7 +72,8 @@ const Posts = ({ setCurrentId }) => {
                     {posts.map((post) => (
 
                         <Grid key={post.id} item >
-                            <Post data={post} setCurrentId={setCurrentId} />
+                            <Post data={post} setCurrentId={setCurrentId} front={front} />
+
                         </Grid>
 
                     ))}

@@ -56,7 +56,6 @@ const Form = ({ currentId, setCurrentId }) => {
                             "marginRight": "10%"
                         }} />
 
-
                         <TextField name="phoneNumber" variant="standard" label="PhoneNumber" value={formData.phoneNumber} onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })} style={{
                             "marginRight": "10%"
                         }} />
@@ -90,6 +89,7 @@ const Form = ({ currentId, setCurrentId }) => {
                         <Button autoFocus color="primary" type="submit" variant="contained">
                             Save changes
                         </Button>
+
                         {/* <Button variant="contained" color="secondary" size="small" onClick={clear}>Clear</Button> */}
 
                     </form>

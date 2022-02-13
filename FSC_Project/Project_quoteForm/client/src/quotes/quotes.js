@@ -19,7 +19,7 @@ const Quotes = () => {
     }, [currentId, dispatch])
 
     const posts = useSelector((state) => state.data);
-    console.warn(posts);
+    // console.warn(posts);
     const classes = useStyles();
 
     // const theme = useTheme();
@@ -40,7 +40,6 @@ const Quotes = () => {
                         </Grid>
                     ))
                 }
-
             </Grid>
             )}
         </div>

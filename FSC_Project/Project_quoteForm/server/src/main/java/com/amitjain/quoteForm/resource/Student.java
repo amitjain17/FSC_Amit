@@ -14,7 +14,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="student_data")
@@ -36,9 +35,20 @@ public class Student {
 	public String estimatedBudget;
 	public String timeFrame;
 	public String projectDetails;
+	//public byte dImage;
 	
-	
+	@Column(columnDefinition = "TEXT")
 	public String image;
+	
+
+//	public byte getdImage() {
+//		return dImage;
+//	}
+//
+//	public void setdImage(byte dImage) {
+//		this.dImage = dImage;
+//	}
+//	
 
 	//Adding Date Automatically
 	
