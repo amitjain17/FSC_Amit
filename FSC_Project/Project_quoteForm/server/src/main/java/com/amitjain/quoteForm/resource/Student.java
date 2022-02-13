@@ -34,6 +34,8 @@ public class Student {
 	public String projectType;
 	public String estimatedBudget;
 	public String timeFrame;
+	
+	@Column(columnDefinition = "TEXT")
 	public String projectDetails;
 	//public byte dImage;
 	

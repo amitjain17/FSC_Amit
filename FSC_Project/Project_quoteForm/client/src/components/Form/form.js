@@ -40,7 +40,7 @@ const Form = ({ currentId, setCurrentId }) => {
             <DialogContent dividers>
                 <Paper >
                     <form autoComplete="off" onSubmit={handleSubmit}
-                        style={{ "padding": "3%" }} noValidate>
+                        style={{ "padding": "3%" }}>
                         <div>
                             <Typography variant="h5" style={{ "textAlign": "center" }}>Creating a Quote</Typography>
                         </div>
