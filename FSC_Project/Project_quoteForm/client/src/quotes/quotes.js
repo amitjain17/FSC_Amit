@@ -26,24 +26,26 @@ const Quotes = () => {
     // const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
-    return (<div>
-        <Appbar />
-        <div style={{ "flexGrow": "1" }}>
+    return (!posts.length ? <CircularProgress color="secondary" style={{ "width": "3rem", "height": "3rem", "marginLeft": "auto", "marginRight": "auto", "display": "block" }} /> :
+        <div>
+            <Appbar />
+            <div style={{ "flexGrow": "1" }}>
 
-            {!posts.length ? <CircularProgress /> : (<Grid className={classes.container} container alignItems="stretch" spacing={3}>
-                {
-                    posts.map((post) => (
-                        <Grid key={post.id} item xs={9} sm={4}>
-                            <Paper className={classes.paper}>
-                                <Post data={post} setCurrentId={setCurrentId} />
-                            </Paper>
-                        </Grid>
-                    ))
-                }
-            </Grid>
-            )}
+                (<div><Grid className={classes.container} container alignItems="stretch" spacing={3}>
+                    {
+                        posts.map((post) => (
+                            <Grid key={post.id} item xs={9} sm={4}>
+                                <Paper className={classes.paper}>
+                                    <Post data={post} setCurrentId={setCurrentId} />
+                                </Paper>
+                            </Grid>
+                        ))
+                    }
+                </Grid>
+                </div>)
+            </div>
         </div>
-    </div>)
+    )
 }
 
 export default Quotes;

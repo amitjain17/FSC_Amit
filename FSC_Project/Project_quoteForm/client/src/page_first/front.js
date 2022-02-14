@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import { Button, DialogTitle, Dialog, makeStyles, Container, Toolbar, Typography, InputBase, Grid, useScrollTrigger, CssBaseline } from '@material-ui/core';
+import { Button, DialogTitle, Dialog, Container, Typography, Grid } from '@material-ui/core';
 import { Search, CloseRounded } from '@material-ui/icons';
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";

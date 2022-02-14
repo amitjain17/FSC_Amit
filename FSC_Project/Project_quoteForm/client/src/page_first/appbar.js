@@ -30,6 +30,7 @@ const Appbar = () => {
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
                             }}
+                            style={{ "padding": "0 25px" }}
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>

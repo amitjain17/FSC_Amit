@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
-import { Dialog, Typography, Paper, Button, DialogActions, DialogTitle, DialogContent, TextField, TextareaAutosize } from '@material-ui/core';
+import { Typography, Paper, Button, DialogContent, TextField, TextareaAutosize } from '@material-ui/core';
 
 import { createData, updateData } from "../../actions/actions.js";
 import { useSelector } from 'react-redux';

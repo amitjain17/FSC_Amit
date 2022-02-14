@@ -1,4 +1,4 @@
-import { CircularProgress, Grid, ImageList, ImageListItem } from '@material-ui/core';
+import { CircularProgress, Grid } from '@material-ui/core';
 import React from 'react';
 import Post from './Post/post.js'
 import { useSelector } from 'react-redux';
@@ -60,7 +60,7 @@ const Posts = ({ setCurrentId, front }) => {
     };
 
     return (
-        !posts.length ? <CircularProgress /> : (
+        !posts.length ? <CircularProgress color="secondary" style={{ "width": "3rem", "height": "3rem", "marginLeft": "auto", "marginRight": "auto", "display": "block" }} /> : (
             <>
                 <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

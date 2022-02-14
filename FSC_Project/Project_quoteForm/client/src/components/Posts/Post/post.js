@@ -47,7 +47,7 @@ const Post = ({ data, front }) => {
 
         </Dialog>
         <Card >
-            <CardHeader avatar={<Avatar>A</Avatar>}
+            <CardHeader avatar={<Avatar style={{ "backgroundColor": "cadetblue" }}>{data.fname[0]}</Avatar>}
                 action={
                     <IconButton aria-label="settings" onClick={handleClick}>
                         {front ? (<></>) : (<MoreVertIcon />)}
@@ -76,7 +76,7 @@ const Post = ({ data, front }) => {
                 <MenuItem onClick={handleClose}>Close</MenuItem>
             </Menu>
 
-            <CardMedia image={data.image} title={data.email} style={{ "height": 0, "paddingTop": "56.25%", "backgroundColor": "rgba(0,0,0,0.5)", "backgroundBlendMode": "darken" }} />
+            <CardMedia image={data.image} title={`${data.fname} ${data.lname}`} style={{ "height": 0, "paddingTop": "56.25%", "backgroundColor": "rgba(0,0,0,0.5)", "backgroundBlendMode": "darken" }} />
             <CardContent>
                 <Typography variant='h6'>
                     Type: {data.projectType}
