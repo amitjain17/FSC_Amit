@@ -1,23 +1,10 @@
-package com.fsc_foodDeliveryApp.models;
+package com.fsc_foodDeliveryApp.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+public class AuthenticationRequest {
 
-@Document(collection = "userDetails")
-public class UserModel {
-
-	@Id
-	private String Id;
 	private String username;
 	private String password;
-
-	public UserModel() {
 		
-	}
-
-	public String getId() {
-		return Id;
-	}
 	
 	public String getUsername() {
 		return username;

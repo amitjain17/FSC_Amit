@@ -8,35 +8,37 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.fsc_foodDeliveryApp.services.UserServices;
+import com.fsc_foodDeliveryApp.Services.UserServices;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-		
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+
 	@Autowired
 	private UserServices userServices;
-
+	
+	
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userServices);
+		auth.userDetailsService(userServices).passwordEncoder(passwordEncoder());
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.csrf().disable()
-			.authorizeRequests().antMatchers("/subs","/auth")
-			.permitAll().anyRequest().authenticated();
+		.csrf().disable()
+		.authorizeRequests().antMatchers("/subs","/auth")
+		.permitAll().anyRequest().authenticated();
 	}
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		
-		return NoOpPasswordEncoder.getInstance();
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder;
 	}
 
 	@Override
@@ -45,5 +47,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 	
-	 
+	
+
 }

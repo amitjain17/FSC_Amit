@@ -1,11 +1,12 @@
-package com.fsc_foodDeliveryApp.models;
+package com.fsc_foodDeliveryApp.model;
 
-public class AuthenticationResponse {
-	
+public class AuthenticateResponse {
+
 	private String response;
 
 	
-	public AuthenticationResponse(String response) {
+	public AuthenticateResponse(String response) {
+		super();
 		this.response = response;
 	}
 
@@ -18,5 +19,4 @@ public class AuthenticationResponse {
 	}
 	
 	
-
 }

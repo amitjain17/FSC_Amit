@@ -4,15 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fsc_foodDeliveryApp.models.AuthenticationRequest;
-import com.fsc_foodDeliveryApp.models.AuthenticationResponse;
-import com.fsc_foodDeliveryApp.models.UserModel;
-import com.fsc_foodDeliveryApp.models.UserRepository;
+import com.fsc_foodDeliveryApp.model.AuthenticateResponse;
+import com.fsc_foodDeliveryApp.model.AuthenticationRequest;
+import com.fsc_foodDeliveryApp.model.UserModel;
+import com.fsc_foodDeliveryApp.model.UserRepository;
 
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
 public class AuthController {
 
@@ -23,39 +26,53 @@ public class AuthController {
 	public AuthenticationManager authenticationManager;
 	
 	@PostMapping("/subs")
-	private ResponseEntity<?> subscribeClient(@RequestBody AuthenticationRequest authenticationRequest){
+	public ResponseEntity<?> subscribeClient(@RequestBody AuthenticationRequest authenticationrequest) {
+		String username = authenticationrequest.getUsername();
+		String password = authenticationrequest.getPassword();
 		
-		String username = authenticationRequest.getUsername();
-		String password = authenticationRequest.getPassword();
-		
-		UserModel userModel = new UserModel();
-		userModel.setUsername(username);
-		userModel.setPassword(password);
-		try {
-			repo.save(userModel);
-			
-		} catch (Exception e) {
-			return ResponseEntity.ok(new AuthenticationResponse("Error "+username));
+		if(repo.findByUsername(username)!=null) {
+			return ResponseEntity.ok(new AuthenticateResponse("Error "+username));
 		}
 		
-		return ResponseEntity.ok(new AuthenticationResponse("Success "+username));
+		BCryptPasswordEncoder PasswordEncoder = new BCryptPasswordEncoder();
+		String EncodedPassword = PasswordEncoder.encode(password);
 		
+		UserModel usermodel = new UserModel();
+		usermodel.setUsername(username);
+		usermodel.setPassword(EncodedPassword);
+		try {
+			repo.save(usermodel);
+		} catch (Exception e) {
+			return ResponseEntity.ok(new AuthenticateResponse("Error "+username));
+		}
+		return ResponseEntity.ok(new AuthenticateResponse("Success "+username));
+
 	}
 	
-
 	@PostMapping("/auth")
-	private ResponseEntity<?> authenticateClient(@RequestBody AuthenticationRequest authenticationRequest){
-	
-		String username = authenticationRequest.getUsername();
-		String password = authenticationRequest.getPassword();
+	public ResponseEntity<?> authenticateClient(@RequestBody AuthenticationRequest authenticationrequest) {
+		String username = authenticationrequest.getUsername();
+		String password = authenticationrequest.getPassword();
 		
+
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-			
-		} catch (Exception e) {
-			return ResponseEntity.ok(new AuthenticationResponse("Error Authenticate "+username));
-		}
-		return ResponseEntity.ok(new AuthenticationResponse("Success Authenticate "+username));
 
+		} catch (Exception e) {
+			return ResponseEntity.ok(new AuthenticateResponse("Error Authenticate "+username));
+		}
+		return ResponseEntity.ok(new AuthenticateResponse("Success Authenticate "+username));
+
+	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
