@@ -1,24 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Typography, Container } from "@material-ui/core";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Navigate } from 'react-router-dom';
 
 
-import GridBar from "../front/gridBar.js";
+import GridBar from "../components/gridBar.js";
 import useStyles from "./styles-login.js";
-import { useDispatch } from 'react-redux';
-import { subscribe, validation } from "../actions/actions.js";
+import { useDispatch, useSelector } from 'react-redux';
+import { validation } from "../actions/actions.js";
 
 
 
 
-const SignIn = () => {
+const SignIn = ({ authorized }) => {
     const classes = useStyles();
     const [loginData, setLoginData] = useState({
-        email: '', password: '', loginStatus: false
+        username: '', password: '', loginStatus: false, response: ""
     })
 
+
+
+    const data1 = useSelector((state) => state.data)
     const dispatch = useDispatch();
-    console.log(loginData);
+
+    useEffect(() => { if (data1) setLoginData(data1) }, [data1])
+    console.warn(loginData);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,15 +35,16 @@ const SignIn = () => {
 
     }
 
+
     const clear = () => {
         setLoginData({
-            email: '', password: '', loginStatus: false
+            username: '', password: '', loginStatus: false
         })
 
     }
 
-    return (
 
+    return (authorized === "Success" ? <><Navigate to="/" /></> : (
         <div>
             <GridBar />
             <Container component="main" maxWidth="xs">
@@ -55,12 +62,12 @@ const SignIn = () => {
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
+                            id="username"
                             label="Email Address"
-                            name="email"
+                            name="username"
                             autoComplete="email"
-                            value={loginData.email}
-                            onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
+                            value={loginData.username}
+                            onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
                             autoFocus
                         />
                         <TextField
@@ -76,10 +83,7 @@ const SignIn = () => {
                             value={loginData.password}
                             onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                         />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
+
                         <Button
                             type="submit"
                             fullWidth
@@ -92,13 +96,14 @@ const SignIn = () => {
                             Sign In
                         </Button>
                         <Grid container>
-                            <Grid item xs>
+                            {/* <Grid item xs>
                                 <Link href="#" variant="body2">
                                     Forgot password?
                                 </Link>
-                            </Grid>
+                            </Grid> */}
                             <Grid item>
-                                <Link href="#" variant="body2">
+
+                                <Link href="/signUp" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
@@ -107,7 +112,7 @@ const SignIn = () => {
                 </div>
             </Container>
         </div>
-
+    )
     );
 
 }

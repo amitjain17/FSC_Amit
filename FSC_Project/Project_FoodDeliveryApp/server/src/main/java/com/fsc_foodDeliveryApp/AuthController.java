@@ -31,7 +31,7 @@ public class AuthController {
 		String password = authenticationrequest.getPassword();
 		
 		if(repo.findByUsername(username)!=null) {
-			return ResponseEntity.ok(new AuthenticateResponse("Error "+username));
+			return ResponseEntity.ok(new AuthenticateResponse("SignUpError"));
 		}
 		
 		BCryptPasswordEncoder PasswordEncoder = new BCryptPasswordEncoder();
@@ -43,7 +43,7 @@ public class AuthController {
 		try {
 			repo.save(usermodel);
 		} catch (Exception e) {
-			return ResponseEntity.ok(new AuthenticateResponse("Error "+username));
+			return ResponseEntity.ok(new AuthenticateResponse("SignUpError "+username));
 		}
 		return ResponseEntity.ok(new AuthenticateResponse("Success "+username));
 
@@ -53,15 +53,14 @@ public class AuthController {
 	public ResponseEntity<?> authenticateClient(@RequestBody AuthenticationRequest authenticationrequest) {
 		String username = authenticationrequest.getUsername();
 		String password = authenticationrequest.getPassword();
-		
-
+	
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
 		} catch (Exception e) {
-			return ResponseEntity.ok(new AuthenticateResponse("Error Authenticate "+username));
+			return ResponseEntity.ok(new AuthenticateResponse("Error "+username));
 		}
-		return ResponseEntity.ok(new AuthenticateResponse("Success Authenticate "+username));
+		return ResponseEntity.ok(new AuthenticateResponse("Success "+username));
 
 	
 	}

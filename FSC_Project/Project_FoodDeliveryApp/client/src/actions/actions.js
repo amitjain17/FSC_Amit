@@ -4,7 +4,9 @@ export const subscribe = (accountData) => async (dispatch) => {
 
     try {
         const { data } = await api.subscribeAccount(accountData);
-        dispatch({ type: "STATUS", payload: data })
+        console.warn(data.response);
+
+        dispatch({ type: "SIGNUP", payload: data })
     } catch (error) {
         console.log(error.message);
     }
