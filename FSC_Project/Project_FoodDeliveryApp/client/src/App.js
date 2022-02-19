@@ -10,14 +10,22 @@ var store = require('store')
 
 function App() {
   let data = useSelector((data) => data)
-  if (data.reduce[0].status !== "") {
-    store.set("data", data);
-    const data1 = store.get("data");
-    data = data1;
+
+  if (JSON.parse(sessionStorage.getItem("data"))) {
+
+    if (data.reduce[0].status !== "") {
+      sessionStorage.setItem("data", JSON.stringify(data));
+      //store.set("data", data);
+      const data1 = JSON.parse(sessionStorage.getItem("data"));
+      data = data1;
+    } else {
+      const data1 = JSON.parse(sessionStorage.getItem("data"));
+      data = data1
+      data.reduce[0].status = ""
+      sessionStorage.setItem("data", JSON.stringify(data));
+    }
   } else {
-    const data1 = store.get("data");
-    data = data1
-    data.reduce[0].status = ""
+    sessionStorage.setItem("data", JSON.stringify(data));
   }
 
   return (
