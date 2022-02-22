@@ -21,3 +21,13 @@ export const validation = (accountData) => async (dispatch) => {
         console.log(error.message);
     }
 }
+
+export const createFood = (Food) => async (dispatch) => {
+    try {
+        const { Food } = await api.createFood(Food);
+        dispatch({ type: "CREATE_FOOD", payload: Food })
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
