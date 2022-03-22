@@ -1,0 +1,12 @@
+.List {
+  text-align: center;
+  list-style: none;
+  margin: 1rem;
+  border: 3px solid rgb(147, 147, 247);
+}
+.Image {
+  margin: 0.5rem;
+}
+.comment {
+  text-align: center;
+}

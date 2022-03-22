@@ -36,6 +36,9 @@ const AddFood = () => {
         setFood({
             "heading": "", "image": "", "amount": "", "variants": ""
         })
+        setVariant({
+            "Small": false, "Medium": false, "Large": false
+        })
     }
 
     return (

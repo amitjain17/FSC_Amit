@@ -22,9 +22,9 @@ export const validation = (accountData) => async (dispatch) => {
     }
 }
 
-export const createFood = (Food) => async (dispatch) => {
+export const createFood = (food) => async (dispatch) => {
     try {
-        const { Food } = await api.createFood(Food);
+        const { Food } = await api.createFood(food);
         dispatch({ type: "CREATE_FOOD", payload: Food })
     }
     catch (error) {
