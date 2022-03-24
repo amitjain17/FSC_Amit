@@ -1,19 +1,15 @@
 import React from 'react';
 //import './App.css';
-import Menu from './components/menuComponents.js';
-import { Navbar, NavbarBrand } from 'reactstrap';
-import { DISHES } from './shared/menuData.js';
+import { BrowserRouter } from 'react-router-dom';
+import Main from './components/MainComponents.js';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar dark color='primary'>
-        <div className='container'>
-          <NavbarBrand href='/'> Heading Navbar</NavbarBrand>
-        </div>
-      </Navbar>
-      <Menu dishes={DISHES} />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Main />
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,61 @@
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Menu from './menuComponents.js';
+import Header from './Header.js';
+import Footer from './Footer.js';
+import Home from './HomeComponents.js';
+import About from './aboutComponents.js';
+import Contact from './contactComponent.js';
+import 'font-awesome/css/font-awesome.css';
+import 'bootstrap-social/bootstrap-social.css';
+import { DISHES } from '../shared/menuData.js';
+import DishDetails from './dishDetail.js';
+import { Routes, Navigate, Route } from 'react-router-dom';
+import { COMMENTS } from './../shared/comments.js';
+import { PROMOTIONS } from './../shared/promotions.js';
+import { LEADERS } from './../shared/leaders.js';
+
+function Main() {
+    const [data, setData] = useState({ selectedDish: 0, dishes: DISHES, comments: COMMENTS, promotions: PROMOTIONS, leaders: LEADERS });
+
+
+    // const DishId = (dishId) => {
+    //     setData({ ...data, selectedDish: dishId })
+    // }
+
+    const DishWithId = () => {
+        const { id } = useParams();
+        let match = id;
+        return (
+            <DishDetails dish={data.dishes.filter((dish) => dish.id === parseInt(match, 10))[0]}
+                comments={data.comments.filter((comment) => comment.dishId === parseInt(match, 10))} />
+        );
+    };
+
+    const Home2 = () => {
+        return (<Home dish={data.dishes.filter((dish) => dish.featured)[0]} promotion={data.promotions.filter((promo) => promo.featured)[0]} leader={data.leaders.filter((leader) => leader.featured)[0]} />);
+    }
+
+
+
+    return (
+        <div className="App">
+            <Header />
+            <Routes>
+                <Route path='/home' element={<Home2 />} />
+                <Route exact path='/menu' element={<Menu dishes={data} />} />
+                <Route path='/menu/:id' element={<DishWithId />} />
+                <Route exact path='/contactus' element={<Contact />} />
+                <Route path='/aboutus' element={<About leaders={data.leaders} />} />
+                <Route path="*" element={<Navigate to="/home" />} />
+            </Routes>
+            <Footer />
+            {/* <Header /> */}
+            {/* <Menu dishes={data.dishes} onClick={(dishId) => DishId(dishId)} />
+            <DishDetails dish={data.dishes.filter((dish) => dish.id === data.selectedDish)[0]} /> */}
+            {/* <Footer /> */}
+        </div>
+    );
+}
+
+export default Main;

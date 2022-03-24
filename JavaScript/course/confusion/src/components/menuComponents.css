@@ -10,3 +10,11 @@
 .comment {
   text-align: center;
 }
+.Container1,
+.Comments {
+  display: flex;
+  justify-content: center;
+}
+.Comments {
+  justify-content: space-evenly;
+}
