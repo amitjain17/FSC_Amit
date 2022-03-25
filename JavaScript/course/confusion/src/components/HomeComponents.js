@@ -49,7 +49,7 @@ function Home(props) {
                 <div className="col-12 col-md m-1">
                     <div>
                         <Card>
-                            {/* <CardImg src={props.leader.image} alt={props.leader.name} /> */}
+                            <CardImg src={props.leader.image} alt={props.leader.name} style={{ height: "23rem" }} />
                             <CardBody>
                                 < h2 > {props.leader.name}</h2 >
                                 {props.leader.designation ? <p>{props.leader.designation}</p> : null}

@@ -8,20 +8,18 @@ import About from './aboutComponents.js';
 import Contact from './contactComponent.js';
 import 'font-awesome/css/font-awesome.css';
 import 'bootstrap-social/bootstrap-social.css';
-import { DISHES } from '../shared/menuData.js';
 import DishDetails from './dishDetail.js';
 import { Routes, Navigate, Route } from 'react-router-dom';
-import { COMMENTS } from './../shared/comments.js';
-import { PROMOTIONS } from './../shared/promotions.js';
-import { LEADERS } from './../shared/leaders.js';
+import { connect, useSelector } from 'react-redux';
 
 function Main() {
-    const [data, setData] = useState({ selectedDish: 0, dishes: DISHES, comments: COMMENTS, promotions: PROMOTIONS, leaders: LEADERS });
+    // const [data, setData] = useState({ });
 
 
     // const DishId = (dishId) => {
     //     setData({ ...data, selectedDish: dishId })
     // }
+    const data = useSelector((state) => state);
 
     const DishWithId = () => {
         const { id } = useParams();
