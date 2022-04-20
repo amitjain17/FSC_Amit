@@ -11,6 +11,10 @@ import 'bootstrap-social/bootstrap-social.css';
 import DishDetails from './dishDetail.js';
 import { Routes, Navigate, Route } from 'react-router-dom';
 import { connect, useSelector } from 'react-redux';
+import { addComment } from '../redux/ActionCreators';
+
+
+
 
 function Main() {
     // const [data, setData] = useState({ });
@@ -34,6 +38,9 @@ function Main() {
         return (<Home dish={data.dishes.filter((dish) => dish.featured)[0]} promotion={data.promotions.filter((promo) => promo.featured)[0]} leader={data.leaders.filter((leader) => leader.featured)[0]} />);
     }
 
+    const mapDispatchToProps = dispatch => ({
+        addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+    });
 
 
     return (
